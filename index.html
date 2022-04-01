@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+    <link rel="stylesheet" href="./dist/css/main.min.css">
+</head>
+
+<body>
+    <div class="loader"></div>
+
+    <div class="main wrapper">
+        <div class="main__app-body">
+            <h1 class="main__app-body--heading">Exchange rate App</h1>
+            <p class="main__app-body--second-heading">Check actually exchange rates</p>
+
+            <div class="main__app-body--section-right">
+                <input min="0" value="1" type="number" id="amount-one">
+                <select id="currency-one">
+                    <option value="PLN">PLN</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                    <option value="CHF">CHF</option>
+                </select>
+            </div>
+            <div class="buttons">
+                <button class="main__app-body--clear-btn">
+                    CLEAR
+            </button>
+                <p>or</p>
+                <button class="main__app-body--swap-btn">
+                SWAP
+            </button>
+            </div>
+
+            <div class="main__app-body--section-left">
+                <input disabled type="number" id="amount-two">
+                <select id="currency-two">
+                    <option value="EUR">EUR</option>
+                    <option value="PLN">PLN</option>
+                    <option value="USD">USD</option>
+                    <option value="GBP">GBP</option>
+                    <option value="CHF">CHF</option>
+                </select>
+            </div>
+
+            <p style="display: none;" class="main__app-body--rate-info"></p>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="./src/js/app.js"></script>
+</body>
+
+</html>

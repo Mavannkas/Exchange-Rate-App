@@ -1,0 +1,26 @@
+.wrapper {
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.section-padding {
+    padding: 0 2rem;
+}
+
+.loader {
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--dark) url(/dist/img/512x512.gif) no-repeat center center;
+    z-index: 2137;
+    background-size: 7%;
+}
+
+@media screen and (min-width: 768px) {
+    .loader {
+        background-size: 3%;
+    }
+}

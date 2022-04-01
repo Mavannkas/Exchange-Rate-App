@@ -1,0 +1,46 @@
+@use 'layout';
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+::selection {
+    color: white;
+    background-color: var(--main-hover);
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.6rem;
+    background-color: var(--dark);
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--dark-blue-color);
+        border-radius: 20rem;
+        &:active {
+            background-color: var(--dark-blue-color-hover);
+        }
+    }
+    &::-webkit-scrollbar {
+        background-color: var(--dark-color-hover);
+        width: 1.2rem;
+    }
+}
+
+:root {
+    // colors
+    --main: #6168fa;
+    --main-hover: #4e56e9;
+    --dark: #14181f;
+    --black: #121212;
+    --white: #ffffff;
+    --grey: #e2e2e2;
+}

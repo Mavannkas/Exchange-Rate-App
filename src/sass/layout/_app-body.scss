@@ -1,0 +1,74 @@
+.main {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__app-body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        max-width: 60rem;
+        background-color: var(--black);
+        border-radius: 2rem;
+        padding: 5rem 8rem;
+        &--section-right,
+        &--section-left {
+            display: flex;
+        }
+        &--heading {
+            color: var(--white);
+        }
+        &--second-heading {
+            color: var(--grey);
+            padding-bottom: 3rem;
+        }
+        input,
+        select {
+            background-color: var(--white);
+            border-radius: 1rem;
+            padding: 2rem 2.5rem;
+            color: var(--dark);
+            font-size: 2rem;
+            border: none;
+            outline: none;
+            &:hover {
+                background-color: var(--grey);
+            }
+        }
+        select {
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+        .buttons {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+            p {
+                color: var(--white);
+            }
+        }
+        button {
+            background-color: var(--main);
+            cursor: pointer;
+            border: none;
+            margin: 2rem 0;
+            padding: 1.5rem 3rem;
+            border-radius: 1rem;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            &:hover {
+                background-color: var(--main-hover);
+            }
+        }
+        &--rate-info {
+            color: var(--main);
+            font-size: 2rem;
+            margin-top: 5rem;
+        }
+    }
+}

@@ -19,10 +19,12 @@
         }
         &--heading {
             color: var(--white);
+            font-size: 4rem;
         }
         &--second-heading {
             color: var(--grey);
             padding-bottom: 3rem;
+            padding-top: 1rem;
         }
         input,
         select {
@@ -60,9 +62,13 @@
             font-size: 2rem;
             display: flex;
             align-items: center;
-            color: var(--white);
+            color: white;
+            transition: transform .1s ease;
             &:hover {
                 background-color: var(--main-hover);
+            }
+            &:active {
+                transform: scale(0.98);
             }
         }
         &--rate-info {

@@ -24,3 +24,34 @@
         background-size: 3%;
     }
 }
+
+[data-theme="light"] {
+    --grey: #14181f;
+    --white: #121212;
+    --black: #ffffff;
+    --dark: #e2e2e2;
+}
+
+.dark-btn {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 5rem;
+    top: 5rem;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color .2s ease, transform .1s ease;
+    &:hover {
+        background-color: var(--black);
+    }
+    &:active {
+        transform: scale(0.94);
+    }
+    i {
+        font-size: 3rem;
+        color: var(--white);
+    }
+}

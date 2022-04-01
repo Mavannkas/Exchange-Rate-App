@@ -7,6 +7,7 @@ const inputTwo = document.querySelector('#amount-two')
 const selectOne = document.querySelector('#currency-one')
 const selectTwo = document.querySelector('#currency-two')
 const result = document.querySelector('.main__app-body--rate-info')
+const themeBtn = document.querySelector('.dark-btn')
 const inputs = [selectOne, selectTwo]
 
 // GLOBAL FUNCTIONS
@@ -29,7 +30,17 @@ const events = () => {
     inputOne.addEventListener('input', calculate)
     selectOne.addEventListener('input', calculate)
     selectTwo.addEventListener('input', calculate)
+    themeBtn.addEventListener('click', () => {
+        if (document.body.getAttribute('data-theme') === 'dark') {
+            document.body.setAttribute('data-theme', 'light')
+            themeBtn.innerHTML = '<i class="uil uil-sun"></i>'
+        } else {
+            document.body.setAttribute('data-theme', 'dark')
+            themeBtn.innerHTML = '<i class="uil uil-moon"></i>'
+        }
+    })
     calculate()
+
 }
 
 // APP FUNCTIONS

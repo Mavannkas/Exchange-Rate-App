@@ -28,16 +28,13 @@
         }
         input,
         select {
-            background-color: var(--white);
+            background-color: white;
             border-radius: 1rem;
             padding: 2rem 2.5rem;
-            color: var(--dark);
+            color: #121212;
             font-size: 2rem;
             border: none;
             outline: none;
-            &:hover {
-                background-color: var(--grey);
-            }
         }
         select {
             cursor: pointer;

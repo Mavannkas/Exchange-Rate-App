@@ -40,9 +40,6 @@
         align-items: center;
         justify-content: space-between;
     }
-    .box-three {
-        justify-content: center;
-    }
     .swap-btn,
     .save-btn {
         display: flex;
@@ -87,31 +84,62 @@
             bottom: 0;
             background-color: var(--main);
         }
+        &__header {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: flex-end;
+            margin-top: 3rem;
+        }
         h2 {
+            position: relative;
             font-size: 2rem;
             color: var(--main);
-            padding-bottom: 2rem;
+            padding-bottom: 2.5rem;
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 100%;
+                height: 2px;
+                background-color: var(--main);
+            }
+        }
+        &__clear-all-btn {
+            color: white;
+            padding: 1.1rem 0;
+            background: var(--main);
+            border-radius: 1rem;
+            border: none;
+            font-size: 2rem;
+            width: 100%;
+            cursor: pointer;
+            transition: visibility .2s ease, opacity .2s ease;
         }
         .empty-error {
             color: var(--white);
-            padding-top: 3rem;
             font-size: 4rem;
+            padding-top: 3rem;
         }
         &__notes-area {
             display: flex;
             align-items: flex-start;
             flex-wrap: wrap;
+            justify-content: space-between;
             &--note {
                 position: relative;
                 background-color: var(--black);
-                padding: 2.5rem;
+                padding: 2rem;
+                min-width: 47%;
+                max-width: 47%;
                 border-radius: 1rem;
-                margin: 1.5rem 1.5rem 0 0;
+                margin: 2.5rem 0 0 0;
                 .date-box {
-                    padding-bottom: 1rem;
+                    padding-bottom: 2rem;
                     .title {
                         color: var(--main);
-                        padding-bottom: .5rem;
+                        padding-bottom: 1rem;
                     }
                     .timer {
                         font-size: 2rem;

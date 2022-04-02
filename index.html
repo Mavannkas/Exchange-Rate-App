@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exchange rate App</title>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.js" integrity="sha512-E378bwaeZf1nwXeJGIwTB58A5gPt5jFU3u6aTGja4ZdRFJeo/N/REKnBgNZOZlH6JdnOPO98vg2AnSGaNfCMFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
@@ -18,7 +21,7 @@
 
     <nav class="nav wrapper">
         <div class="nav__title-box">
-            <div class="box">
+            <div class="box scroll-box1">
                 <h1 class="nav__title-box--title">Exchange Rate App</h1>
                 <p class="nav__title-box--subtitle">
                     Check the current exchange rates in the world!</p>
@@ -26,7 +29,7 @@
 
             <div class="nav__title-box--line"></div>
 
-            <div class="box-two">
+            <div class="box-two scroll-box2">
                 <p class="nav__title-box--date">Date</p>
                 <p class="nav__title-box--timer timer"></p>
             </div>
@@ -70,10 +73,14 @@
         </div>
 
         <div class="history-container">
-            <h2>Save Your History Exchange rate result</h2>
+            <h2>Save yours history exchange rate results</h2>
+
+            <div class="history-container__header">
+                <button style="visibility: hidden; opacity: 0;" class="history-container__clear-all-btn">Clear History</button>
+                <p class="empty-error">History is empty</p>
+            </div>
 
             <div class="history-container__notes-area">
-                <p class="empty-error">History is empty</p>
             </div>
         </div>
     </div>

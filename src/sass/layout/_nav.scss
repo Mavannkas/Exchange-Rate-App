@@ -65,23 +65,3 @@
 .dark-mode-transform {
     transform: translateX(3.5rem);
 }
-
-@media screen and (max-width: 768px) {
-    .nav {
-        justify-content: center;
-        &__title-box {
-            &--subtitle {
-                color: var(--main);
-                padding-bottom: 2rem;
-            }
-            &--timer,
-            &--line,
-            &--date {
-                display: none;
-            }
-            .box {
-                text-align: center;
-            }
-        }
-    }
-}

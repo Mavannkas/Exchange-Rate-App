@@ -12,16 +12,22 @@ const swapBtn = document.querySelector('.swap-btn')
 const swapArrow = document.querySelector('.swap-arrow')
 const saveBtn = document.querySelector('.save-btn')
 const result = document.querySelector('.result')
+const errorMsg = document.querySelector('.container__error-msg')
 
 const historyArea = document.querySelector('.history-container__notes-area')
 const emptyError = document.querySelector('.empty-error')
 const clearHistoryBtn = document.querySelector('.history-container__clear-all-btn')
+
 let cardID = 0
 let cardAmount = 0
 let currency1
 let currency2
 let date
 let hour
+
+let show
+let hide
+let checkValues
 
 const main = () => {
     events()
@@ -31,7 +37,25 @@ const main = () => {
 const events = () => {
     loaderLoading()
     dateCalculating()
-    saveBtn.addEventListener('click', createElement)
+    saveBtn.addEventListener('click', () => {
+        if (inputOne.value === '' || inputOne.value === '0') {
+            anime({
+                targets: '.container__error-msg',
+                duration: 60,
+                translateX: [
+                    { value: 60, duration: 60 },
+                    { value: -30, duration: 60 },
+                    { value: 0, duration: 60 }
+                ]
+            });
+            errorMsg.style.display = 'flex'
+            errorMsg.style.opacity = '1'
+        } else {
+            errorMsg.style.display = 'none'
+            errorMsg.style.opacity = '0'
+            createElement()
+        }
+    })
     inputOne.addEventListener('input', calculate)
     swapBtn.addEventListener('click', () => {
         swap()
@@ -40,10 +64,12 @@ const events = () => {
     currencyChoiceOne.addEventListener('change', () => {
         calculate()
         checkIfTheSame()
+        checkValues()
     })
     currencyChoiceTwo.addEventListener('change', () => {
         calculate()
         checkIfTheSame()
+        checkValues()
     })
 
     themeBtn.addEventListener('click', () => {
@@ -146,16 +172,23 @@ const dateCalculating = () => {
 }
 
 const checkIfTheSame = () => {
-    if (currencyChoiceOne.value === currencyChoiceTwo.value) {
-        saveBtn.style.pointerEvents = 'none'
-        saveBtn.style.opacity = '0.5'
-        swapBtn.style.pointerEvents = 'none'
-        swapBtn.style.opacity = '0.5'
-    } else {
+    show = () => {
         saveBtn.style.pointerEvents = 'all'
         saveBtn.style.opacity = '1'
         swapBtn.style.pointerEvents = 'all'
         swapBtn.style.opacity = '1'
+    }
+    hide = () => {
+        saveBtn.style.pointerEvents = 'none'
+        saveBtn.style.opacity = '0.5'
+        swapBtn.style.pointerEvents = 'none'
+        swapBtn.style.opacity = '0.5'
+    }
+
+    if (currencyChoiceOne.value === currencyChoiceTwo.value) {
+        hide()
+    } else {
+        show()
     }
 }
 

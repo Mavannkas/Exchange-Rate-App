@@ -7,6 +7,11 @@
     padding: 8rem 2rem;
     .container {
         max-width: 53rem;
+        &__error-msg {
+            color: var(--main);
+            font-size: 1.5rem;
+            transition: transform .2s ease, opacity .2s ease;
+        }
     }
     &__title {
         color: var(--main);
@@ -135,7 +140,7 @@
         }
         .empty-error {
             color: var(--white);
-            font-size: 4rem;
+            font-size: 3rem;
             padding-top: 3rem;
         }
         &__notes-area {
@@ -155,13 +160,11 @@
                     padding-bottom: 2rem;
                     .title {
                         color: var(--main);
-                        padding-bottom: 1rem;
+                        padding-bottom: .7rem;
                     }
-                    .timer {
-                        font-size: 2rem;
-                        color: var(--white);
-                    }
+                    .timer,
                     .timerHours {
+                        font-size: 2rem;
                         color: var(--white);
                     }
                 }
@@ -186,6 +189,7 @@
                 }
             }
             .result {
+                font-size: 1.8rem;
                 color: var(--main);
             }
         }

@@ -10,24 +10,24 @@
         align-items: center;
         &--title {
             color: var(--white);
-            font-size: 2rem;
+            font-size: 2.5rem;
             padding-bottom: 1rem;
         }
         &--subtitle {
             color: var(--main);
-            font-size: 1.5rem;
+            font-size: 1.8rem;
         }
         .box {
             text-align: right;
         }
         .box-two {
-            margin-left: 9rem;
+            margin-left: 13rem;
         }
         &--line {
             height: 100%;
             width: 1px;
             position: absolute;
-            margin-left: 39rem;
+            margin-left: 48rem;
             background-color: var(--main);
         }
         &--timer {

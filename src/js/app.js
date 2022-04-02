@@ -9,6 +9,7 @@ const currencyChoiceOne = document.querySelector('#selectOne')
 const currencyChoiceTwo = document.querySelector('#selectTwo')
 
 const swapBtn = document.querySelector('.swap-btn')
+const swapArrow = document.querySelector('.swap-arrow')
 const saveBtn = document.querySelector('.save-btn')
 const result = document.querySelector('.result')
 
@@ -32,7 +33,10 @@ const events = () => {
     dateCalculating()
     saveBtn.addEventListener('click', createElement)
     inputOne.addEventListener('input', calculate)
-    swapBtn.addEventListener('click', swap)
+    swapBtn.addEventListener('click', () => {
+        swap()
+        swapArrow.classList.toggle('icon-rotate')
+    })
     currencyChoiceOne.addEventListener('change', () => {
         calculate()
         checkIfTheSame()
@@ -64,29 +68,16 @@ const events = () => {
     })
 }
 
-const checkIfTheSame = () => {
-    if (currencyChoiceOne.value === currencyChoiceTwo.value) {
-        saveBtn.style.pointerEvents = 'none'
-        saveBtn.style.opacity = '0.5'
-        swapBtn.style.pointerEvents = 'none'
-        swapBtn.style.opacity = '0.5'
-    } else {
-        saveBtn.style.pointerEvents = 'all'
-        saveBtn.style.opacity = '1'
-        swapBtn.style.pointerEvents = 'all'
-        swapBtn.style.opacity = '1'
-    }
-}
+const calculate = () => {
+    fetch(`https://api.exchangerate.host/latest?base=${currencyChoiceOne.value}&symbols=${currencyChoiceTwo.value}`)
+        .then(res => res.json())
+        .then(data => {
+            currency1 = currencyChoiceOne.value
+            currency2 = currencyChoiceTwo.value
+            const rate = data.rates[currency2]
 
-const showClearBtn = () => {
-    if (cardAmount !== 0) {
-        clearHistoryBtn.style.visibility = 'visible'
-        clearHistoryBtn.style.opacity = '1'
-    } else {
-        clearHistoryBtn.style.visibility = 'hidden'
-        clearHistoryBtn.style.opacity = '0'
-    }
-
+            inputResult.value = (inputOne.value * rate).toFixed(2)
+        })
 }
 
 const createElement = () => {
@@ -140,18 +131,6 @@ const loaderLoading = () => {
     });
 };
 
-const calculate = () => {
-    fetch(`https://api.exchangerate.host/latest?base=${currencyChoiceOne.value}&symbols=${currencyChoiceTwo.value}`)
-        .then(res => res.json())
-        .then(data => {
-            currency1 = currencyChoiceOne.value
-            currency2 = currencyChoiceTwo.value
-            const rate = data.rates[currency2]
-
-            inputResult.value = (inputOne.value * rate).toFixed(2)
-        })
-}
-
 const swap = () => {
     let oldValue = currencyChoiceOne.value
     currencyChoiceOne.value = currencyChoiceTwo.value
@@ -164,6 +143,31 @@ const dateCalculating = () => {
     date = today.getDate() + '.' + (today.getMonth() + 1) + '.' + today.getFullYear()
     hour = today.getHours() + ':' + (today.getMinutes())
     timer.textContent = date
+}
+
+const checkIfTheSame = () => {
+    if (currencyChoiceOne.value === currencyChoiceTwo.value) {
+        saveBtn.style.pointerEvents = 'none'
+        saveBtn.style.opacity = '0.5'
+        swapBtn.style.pointerEvents = 'none'
+        swapBtn.style.opacity = '0.5'
+    } else {
+        saveBtn.style.pointerEvents = 'all'
+        saveBtn.style.opacity = '1'
+        swapBtn.style.pointerEvents = 'all'
+        swapBtn.style.opacity = '1'
+    }
+}
+
+const showClearBtn = () => {
+    if (cardAmount !== 0) {
+        clearHistoryBtn.style.visibility = 'visible'
+        clearHistoryBtn.style.opacity = '1'
+    } else {
+        clearHistoryBtn.style.visibility = 'hidden'
+        clearHistoryBtn.style.opacity = '0'
+    }
+
 }
 
 ScrollReveal({

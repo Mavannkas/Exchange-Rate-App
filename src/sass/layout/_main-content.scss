@@ -4,9 +4,9 @@
     grid-template-columns: repeat(2, 1fr);
     grid-auto-flow: row dense;
     gap: 2rem;
-    padding: 10rem 2rem;
+    padding: 8rem 2rem;
     .container {
-        max-width: 50rem;
+        max-width: 53rem;
     }
     &__title {
         color: var(--main);
@@ -29,10 +29,20 @@
     select {
         cursor: pointer;
         margin-left: 2rem;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        text-indent: 1px;
+        text-overflow: '';
+        width: 20rem;
     }
     input {
         min-width: 10rem;
         max-width: 70rem;
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
     }
     .box,
     .box-two {
@@ -60,12 +70,15 @@
             transform: scale(0.98);
         }
         .swap {
-            padding-right: 1rem;
+            padding-right: .5rem;
             color: white;
         }
         .swap-icon {
             color: white;
-            font-size: 2.3rem;
+            font-size: 2.5rem;
+        }
+        .swap-arrow {
+            font-size: 3rem;
         }
         &:hover {
             background-color: var(--main-hover);
@@ -74,7 +87,7 @@
     .history-container {
         background-color: var(--dark);
         position: relative;
-        padding-left: 13rem;
+        padding-left: 15rem;
         &::after {
             content: '';
             position: absolute;
@@ -115,7 +128,10 @@
             font-size: 2rem;
             width: 100%;
             cursor: pointer;
-            transition: visibility .2s ease, opacity .2s ease;
+            transition: background .2s ease, visibility .2s ease, opacity .2s ease;
+            &:hover {
+                background: var(--main-hover);
+            }
         }
         .empty-error {
             color: var(--white);
@@ -174,4 +190,8 @@
             }
         }
     }
+}
+
+.icon-rotate {
+    transform: rotate(180deg);
 }

@@ -10,15 +10,9 @@
     top: 0;
     left: 0;
     width: 100%;
-    background: var(--dark) url(/dist/img/512x512.gif) no-repeat center center;
+    background: var(--dark) url(/dist/img/loader.gif) no-repeat center center;
     z-index: 2137;
-    background-size: 7%;
-}
-
-@media screen and (min-width: 768px) {
-    .loader {
-        background-size: 3%;
-    }
+    background-size: 3%;
 }
 
 [data-theme="light"] {
@@ -27,10 +21,4 @@
     --black: #dbdbdb;
     --dark: #ffffff;
     --subdark: #d4d4d4;
-}
-
-@media screen and (min-width: 500px) {
-    .section-padding {
-        padding: 0 2rem;
-    }
 }

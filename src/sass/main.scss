@@ -42,3 +42,15 @@ body {
     --white: #ffffff;
     --subdark: #0c0c0e;
 }
+
+.loader {
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--dark) url("../img/loader.gif") no-repeat center center;
+    z-index: 2137;
+    pointer-events: none;
+    background-size: 3%;
+}

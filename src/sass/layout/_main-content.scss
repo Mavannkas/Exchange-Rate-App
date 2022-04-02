@@ -1,0 +1,149 @@
+.main {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-flow: row dense;
+    gap: 2rem;
+    padding: 10rem 2rem;
+    .container {
+        max-width: 50rem;
+    }
+    &__title {
+        color: var(--main);
+        font-size: 2rem;
+    }
+    input,
+    select {
+        padding: 2.5rem 3rem;
+        background-color: var(--black);
+        border-radius: 1rem;
+        border: none;
+        outline: none;
+        color: var(--white);
+        margin: 2rem 0;
+        font-size: 2rem;
+        &:hover {
+            background-color: var(--grey);
+        }
+    }
+    select {
+        cursor: pointer;
+        margin-left: 2rem;
+    }
+    input {
+        min-width: 10rem;
+        max-width: 70rem;
+    }
+    .box,
+    .box-two {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .box-three {
+        justify-content: center;
+    }
+    .swap-btn,
+    .save-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 3rem;
+        background-color: var(--main);
+        border-radius: 1rem;
+        border: none;
+        width: 100%;
+        outline: none;
+        color: var(--white);
+        margin: 2rem 0;
+        font-size: 2.5rem;
+        cursor: pointer;
+        transition: transform .2s ease;
+        &:active {
+            transform: scale(0.98);
+        }
+        .swap {
+            padding-right: 1rem;
+            color: white;
+        }
+        .swap-icon {
+            color: white;
+            font-size: 2.3rem;
+        }
+        &:hover {
+            background-color: var(--main-hover);
+        }
+    }
+    .history-container {
+        background-color: var(--dark);
+        position: relative;
+        padding-left: 13rem;
+        &::after {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 2px;
+            left: 0;
+            bottom: 0;
+            background-color: var(--main);
+        }
+        h2 {
+            font-size: 2rem;
+            color: var(--main);
+            padding-bottom: 2rem;
+        }
+        .empty-error {
+            color: var(--white);
+            padding-top: 3rem;
+            font-size: 4rem;
+        }
+        &__notes-area {
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            &--note {
+                position: relative;
+                background-color: var(--black);
+                padding: 2.5rem;
+                border-radius: 1rem;
+                margin: 1.5rem 1.5rem 0 0;
+                .date-box {
+                    padding-bottom: 1rem;
+                    .title {
+                        color: var(--main);
+                        padding-bottom: .5rem;
+                    }
+                    .timer {
+                        font-size: 2rem;
+                        color: var(--white);
+                    }
+                    .timerHours {
+                        color: var(--white);
+                    }
+                }
+                .delete-note-btn {
+                    position: absolute;
+                    top: 1rem;
+                    right: 1rem;
+                    background: none;
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                    border: none;
+                    cursor: pointer;
+                    transition: background .1s ease;
+                    &:hover {
+                        background: var(--dark);
+                    }
+                    i {
+                        font-size: 2rem;
+                        color: var(--white);
+                    }
+                }
+            }
+            .result {
+                color: var(--main);
+            }
+        }
+    }
+}

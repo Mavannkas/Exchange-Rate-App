@@ -1,49 +1,98 @@
-// STORED ITEMS
 const loader = document.querySelector('.loader');
-const swapBtn = document.querySelector('.main__app-body--swap-btn')
-const clearBtn = document.querySelector('.main__app-body--clear-btn')
-const inputOne = document.querySelector('#amount-one')
-const inputTwo = document.querySelector('#amount-two')
-const selectOne = document.querySelector('#currency-one')
-const selectTwo = document.querySelector('#currency-two')
-const result = document.querySelector('.main__app-body--rate-info')
-const themeBtn = document.querySelector('.dark-btn')
-const inputs = [selectOne, selectTwo]
+const themeCircle = document.querySelector('.circle')
+const themeBtn = document.querySelector('.nav__options--toggle-theme-btn')
+const timer = document.querySelector('.timer')
 
-// GLOBAL FUNCTIONS
+const inputOne = document.querySelector('#input-money')
+const inputResult = document.querySelector('#input-result')
+const currencyChoiceOne = document.querySelector('#selectOne')
+const currencyChoiceTwo = document.querySelector('#selectTwo')
+
+const swapBtn = document.querySelector('.swap-btn')
+const saveBtn = document.querySelector('.save-btn')
+const result = document.querySelector('.result')
+
+const historyArea = document.querySelector('.history-container__notes-area')
+const emptyError = document.querySelector('.empty-error')
+let cardID = 0
+let cardAmount = 0
+let currency1
+let currency2
+let date
+let hour
+
+// -----------------------------------------
+
 const main = () => {
     events()
+    calculate()
 }
 
 const events = () => {
     loaderLoading()
-    inputs.forEach(i => {
-        i.addEventListener('focusin', () => {
-            i.style.borderRadius = '1rem 1rem 0 0'
-        })
-        i.addEventListener('focusout', () => {
-            i.style.borderRadius = '1rem'
-        })
-    })
-    clearBtn.addEventListener('click', clearingForm)
-    swapBtn.addEventListener('click', swap)
+    dateCalculating()
+    saveBtn.addEventListener('click', createElement)
     inputOne.addEventListener('input', calculate)
-    selectOne.addEventListener('input', calculate)
-    selectTwo.addEventListener('input', calculate)
+    currencyChoiceOne.addEventListener('change', calculate)
+    swapBtn.addEventListener('click', swap)
+    currencyChoiceTwo.addEventListener('change', calculate)
     themeBtn.addEventListener('click', () => {
-        if (document.body.getAttribute('data-theme') === 'dark') {
+        if (!themeCircle.classList.contains('dark-mode-transform')) {
+            themeCircle.classList.add('dark-mode-transform')
+        } else {
+            themeCircle.classList.remove('dark-mode-transform')
+        }
+
+        if (document.body.getAttribute('data-theme') !== 'light') {
             document.body.setAttribute('data-theme', 'light')
-            themeBtn.innerHTML = '<i class="uil uil-sun"></i>'
         } else {
             document.body.setAttribute('data-theme', 'dark')
-            themeBtn.innerHTML = '<i class="uil uil-moon"></i>'
         }
     })
-    calculate()
-
 }
 
-// APP FUNCTIONS
+
+const createElement = () => {
+    const historyNote = document.createElement('div')
+    historyNote.classList.add('history-container__notes-area--note')
+    historyArea.appendChild(historyNote)
+    historyNote.setAttribute('id', cardID)
+
+    historyNote.innerHTML = `
+    <button class="delete-note-btn" onclick="deleteElement(${cardID})">
+    <i class="uil uil-times"></i>
+    </button>
+    <div class="date-box">
+    <p class="title">Date</p>
+    <p class="nav__title-box--timer timer">${date}</p>
+    <p class="timerHours">at ${hour}</p>
+    </div>
+    <p class="result">${inputOne.value} ${currency1} = ${inputResult.value} ${currency2}</p>
+    `
+    cardID++
+    cardAmount++
+    emptyChecker()
+}
+
+const deleteElement = (id) => {
+    const newElement = document.getElementById(id)
+    historyArea.removeChild(newElement)
+
+    if (cardAmount !== 0) {
+        cardAmount--
+    }
+    emptyChecker()
+}
+
+const emptyChecker = () => {
+    if (cardAmount !== 0) {
+        emptyError.style.display = 'none'
+    } else {
+        emptyError.style.display = 'flex'
+    }
+}
+
+
 const loaderLoading = () => {
     window.addEventListener('load', () => {
         setTimeout(() => {
@@ -53,35 +102,29 @@ const loaderLoading = () => {
 };
 
 const calculate = () => {
-    fetch(`https://api.exchangerate.host/latest?base=${selectOne.value}&symbols=${selectTwo.value}`)
+    fetch(`https://api.exchangerate.host/latest?base=${currencyChoiceOne.value}&symbols=${currencyChoiceTwo.value}`)
         .then(res => res.json())
         .then(data => {
-            const currencyOne = selectOne.value
-            const currencyTwo = selectTwo.value
-            const rate = data.rates[currencyTwo]
+            currency1 = currencyChoiceOne.value
+            currency2 = currencyChoiceTwo.value
+            const rate = data.rates[currency2]
 
-            result.style.display = 'flex'
-
-            result.textContent = `${inputOne.value} ${currencyOne} = ${(inputOne.value * rate).toFixed(3)} ${currencyTwo}`
-
-            inputTwo.value = (inputOne.value * rate).toFixed(2)
-
+            inputResult.value = (inputOne.value * rate).toFixed(2)
         })
 }
 
-const clearingForm = () => {
-    inputOne.value = '1'
-    selectOne.value = 'PLN'
-    selectTwo.value = 'EUR'
-    calculate()
-}
-
 const swap = () => {
-    let two = selectOne.value
-    selectOne.value = selectTwo.value
-    selectTwo.value = two
+    let oldValue = currencyChoiceOne.value
+    currencyChoiceOne.value = currencyChoiceTwo.value
+    currencyChoiceTwo.value = oldValue
     calculate()
 }
 
-// MAIN LISTENING
+const dateCalculating = () => {
+    let today = new Date()
+    date = today.getDate() + '.' + (today.getMonth() + 1) + '.' + today.getFullYear()
+    hour = today.getHours() + ':' + (today.getMinutes())
+    timer.textContent = date
+}
+
 document.addEventListener('DOMContentLoaded', main)

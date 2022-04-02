@@ -16,51 +16,67 @@
 <body data-theme="dark">
     <div class="loader"></div>
 
-    <div class="main wrapper">
-        <div class="main__app-body">
-            <h1 class="main__app-body--heading">Exchange rate App</h1>
-            <p class="main__app-body--second-heading">Check actually exchange rates</p>
-
-            <div class="main__app-body--section-right">
-                <input min="0" value="1" type="number" id="amount-one">
-                <select id="currency-one">
-                    <option value="PLN">PLN</option>
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                    <option value="GBP">GBP</option>
-                    <option value="CHF">CHF</option>
-                </select>
-            </div>
-            <div class="buttons">
-                <button class="main__app-body--clear-btn">
-                    CLEAR
-            </button>
-                <p>or</p>
-                <button class="main__app-body--swap-btn">
-                SWAP
-            </button>
+    <nav class="nav wrapper">
+        <div class="nav__title-box">
+            <div class="box">
+                <h1 class="nav__title-box--title">Exchange Rate App</h1>
+                <p class="nav__title-box--subtitle">
+                    Check the current exchange rates in the world!</p>
             </div>
 
-            <div class="main__app-body--section-left">
-                <input disabled type="number" id="amount-two">
-                <select id="currency-two">
-                    <option value="EUR">EUR</option>
-                    <option value="PLN">PLN</option>
-                    <option value="USD">USD</option>
-                    <option value="GBP">GBP</option>
-                    <option value="CHF">CHF</option>
-                </select>
-            </div>
+            <div class="nav__title-box--line"></div>
 
-            <p style="display: none;" class="main__app-body--rate-info"></p>
+            <div class="box-two">
+                <p class="nav__title-box--date">Date</p>
+                <p class="nav__title-box--timer timer"></p>
+            </div>
         </div>
 
-    </div>
+        <div class="nav__options">
+            <button class="nav__options--toggle-theme-btn">
+                <div class="circle"></div>
+            </button>
+        </div>
+    </nav>
 
-    <div class="dark-btn">
-        <i class="uil uil-moon"></i>
-    </div>
+    <div class="main wrapper">
+        <div class="container">
+            <p class="main__title">How much do you want to exchange money?</p>
+            <div class="box">
+                <input value="1" min="1" type="number" id="input-money">
+                <select id="selectOne">
+                <option selected value="PLN">PLN</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="CHF">CHF</option>
+            </select>
+            </div>
+            <button class="swap-btn"><p class="swap">Swap</p><p class="swap-icon"><i class="uil uil-corner-up-left-alt"></i></p></button>
+            <div class="box-two">
+                <input placeholder="Result" disabled min="1" type="number" id="input-result">
+                <select id="selectTwo">
+                    <option value="PLN">PLN</option>
+                    <option value="USD">USD</option>
+                    <option selected value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                    <option value="CHF">CHF</option>
+                </select>
+            </div>
 
+            <div class="box-three">
+                <button class="save-btn"><p class="swap">Save</p><p class="swap-icon"><i class="uil uil-bookmark"></i></p></button>
+            </div>
+        </div>
+
+        <div class="history-container">
+            <h2>Save Your History Exchange rate result</h2>
+
+            <div class="history-container__notes-area">
+                <p class="empty-error">History is empty</p>
+            </div>
+        </div>
+    </div>
     <script type="text/javascript" src="./src/js/app.js"></script>
 </body>
 

@@ -19,27 +19,26 @@ html {
 body {
     font-family: 'Inter', sans-serif;
     font-size: 1.6rem;
-    transition: background-color .2s ease, color .2s ease;
     background-color: var(--dark);
     &::-webkit-scrollbar-thumb {
-        background-color: var(--dark-blue-color);
+        background-color: var(--white);
         border-radius: 20rem;
         &:active {
-            background-color: var(--dark-blue-color-hover);
+            background-color: var(--grey);
         }
     }
     &::-webkit-scrollbar {
-        background-color: var(--dark-color-hover);
+        background-color: var(--dark);
         width: 1.2rem;
     }
 }
 
 :root {
-    // colors
-    --main: #6168fa;
-    --main-hover: #4e56e9;
-    --dark: #14181f;
-    --black: #121212;
+    --main: #219DEC;
+    --main-hover: #00aeff;
+    --black: #16181C;
+    --dark: #000000;
+    --grey: #141418;
     --white: #ffffff;
-    --grey: #eeeeee;
+    --subdark: #0c0c0e;
 }

@@ -1,0 +1,87 @@
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 3rem 2rem;
+    &__title-box {
+        position: relative;
+        display: flex;
+        align-items: center;
+        &--title {
+            color: var(--white);
+            font-size: 2rem;
+            padding-bottom: 1rem;
+        }
+        &--subtitle {
+            color: var(--main);
+            font-size: 1.5rem;
+        }
+        .box {
+            text-align: right;
+        }
+        .box-two {
+            margin-left: 9rem;
+        }
+        &--line {
+            height: 100%;
+            width: 1px;
+            position: absolute;
+            margin-left: 39rem;
+            background-color: var(--main);
+        }
+        &--timer {
+            font-size: 3.5rem;
+            color: var(--white);
+        }
+        &--date {
+            color: var(--white);
+        }
+    }
+    &__options {
+        &--toggle-theme-btn {
+            background-color: var(--black);
+            width: 8rem;
+            height: 4.2rem;
+            border-radius: 2137px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            .circle {
+                margin-left: .7rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                background-color: white;
+                height: 3rem;
+                width: 3rem;
+                transition: transform .4s ease;
+            }
+        }
+    }
+}
+
+.dark-mode-transform {
+    transform: translateX(3.5rem);
+}
+
+@media screen and (max-width: 768px) {
+    .nav {
+        justify-content: center;
+        &__title-box {
+            &--subtitle {
+                color: var(--main);
+                padding-bottom: 2rem;
+            }
+            &--timer,
+            &--line,
+            &--date {
+                display: none;
+            }
+            .box {
+                text-align: center;
+            }
+        }
+    }
+}
